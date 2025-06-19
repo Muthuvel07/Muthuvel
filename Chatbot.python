@@ -1,0 +1,70 @@
+import nltk
+import random
+import string
+
+from nltk.chat.util import Chat, reflections
+from nltk.corpus import wordnet
+
+# Download necessary NLTK data
+nltk.download('punkt')
+nltk.download('wordnet')
+
+# Define chatbot pairs (pattern, response)
+pairs = [
+    [
+        r"hi|hello|hey",
+        ["Hello!", "Hey there!", "Hi, how can I help you?"]
+    ],
+    [
+        r"what is your name ?",
+        ["I am a chatbot created by Muthuvel.", "You can call me AI Bot."]
+    ],
+    [
+        r"how are you ?",
+        ["I'm doing good. How about you?", "I'm fine!"]
+    ],
+    [
+        r"sorry (.*)",
+        ["No problem!", "It's okay!", "No worries!"]
+    ],
+    [
+        r"i'm (.*) doing good",
+        ["Nice to hear that!", "Great!"]
+    ],
+    [
+        r"(.*) age?",
+        ["I am timeless!", "I don't have an age like humans."]
+    ],
+    [
+        r"(.*) created you?",
+        ["Muthuvel created me using Python and NLP!", "My developer is Muthuvel."]
+    ],
+    [
+        r"(.*) (location|city) ?",
+        ['I am everywhere 😄', 'In your computer!']
+    ],
+    [
+        r"(.*) help (.*)",
+        ["I can help you with Python, AI, and small talk."]
+    ],
+    [
+        r"quit|bye|exit",
+        ["Bye! Take care.", "Goodbye!", "See you soon!"]
+    ],
+    [
+        r"(.*)",
+        ["Interesting!", "Tell me more.", "I see.", "Can you explain further?"]
+    ]
+]
+
+# Create chatbot
+chatbot = Chat(pairs, reflections)
+
+# Start chatting
+def start_chat():
+    print("Hi! I'm your Python chatbot. Type 'quit' to exit.")
+    chatbot.converse()
+
+# Run chatbot
+if __name__ == "__main__":
+    start_chat()
